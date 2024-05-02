@@ -13,7 +13,12 @@ app.use(express.json())
 app.use(cors())
 
 //routes
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+// readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+const routesPath = path.join(__dirname, 'routes');
+readdirSync(routesPath).map((file) => {
+    const route = require(path.join(routesPath, file));
+    app.use('/api/v1', route);
+});
 
 const server = () => {
     db()
