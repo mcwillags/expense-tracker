@@ -11,7 +11,7 @@ const PORT = process.env.PORT
 
 //middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors({origin: "*"}))
 
 //routes
 app.use("/app", appRoutes)
@@ -24,4 +24,8 @@ const server = () => {
     })
 }
 
+<<<<<<< HEAD
 server() 
+=======
+server()
+>>>>>>> 37a0fb5297e1e986101056135ef083542783401e
